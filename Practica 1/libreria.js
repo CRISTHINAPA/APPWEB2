@@ -3,7 +3,7 @@ fetch("https://pokeapi.co/api/v2/pokemon/100", {
 })
   .then((response) => response.json())
   .then((data) => {
-    const pokemonId = data.weight;
-    console.log(` ${pokemonId}`);
+    const pokemonid = data.weight;  
+    console.log(` ${pokemonid}`);
   })
   .catch((error) => console.error("Ha ocurrido un error:", error));
