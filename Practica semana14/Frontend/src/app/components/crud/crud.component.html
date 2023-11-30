@@ -1,0 +1,81 @@
+
+<div class="bodyComponents">
+    <div class="text-center lg:text-left">
+      <h1 class="text-3xl text-center font-bold">Alergias s</h1>
+    </div>
+    <div class="flex flex-row justify-between items-center">
+      <div class="flex flex-row">
+        <button class="btn flex flex-row items-center m-2 " onclick="my_modal_3.showModal()">
+          <img src= "../../../assets/imagenes/boton-agregar.png" alt="+">
+          <p class="items-center mx-2">ingresar</p>
+        </button>
+  
+      </div>
+    </div>
+    <hr>
+    <div class="flex flex-row overflow-x-auto justify-self-center" *ngIf="datos.length > 0 ">
+      <table class="table table-zebra text-lg">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>NombreAlergia</th>
+            <th>DetalleTratamiento</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Alergias of datos">
+            <td>{{ Alergias.id }}</td>
+            <td>{{ Alergias.nombreAlergia }}</td>
+            <td>{{ Alergias.detalleTratamiento }}</td>
+
+            
+
+
+            <td>
+              <button class="btn m-2 btn-accent text-slate-200" onclick="my_modal_2.showModal()" (click)="ObtenerDatosE(Alergias)">Editar</button>
+              <button class="btn btn-outline btn-secondary" (click)="Alergias && EliminarDatos(Alergias?.id)">Eliminar</button>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+     
+  
+  
+    <dialog id="my_modal_3" class="modal" >
+      <form  [formGroup]="AlergiasForm" method="dialog" class="modal-box" (ngSubmit)="AgregarDatos()">
+        
+        <!-- Campos del formulario -->
+        <h3 class="font-bold text-lg"> - CREAR - </h3>
+        <input class="m-2 p-2" type="text" placeholder="NombreAlergia" formControlName="nombreAlergia">
+        <input class="m-2 p-2" type="text" placeholder="DetalleTratamiento" formControlName="detalleTratamiento">
+   
+
+        <button class="btn" type="submit">Enviar</button>
+        <p class="py-4">Presione la tecla ESC o haga clic fuera para cerrar</p>
+      </form>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
+  
+  
+    <dialog id="my_modal_2" class="modal" >
+      <form  [formGroup]="UpdateAlergiasForm" method="dialog" class="modal-box" (ngSubmit)="UpdateDatos()">
+
+        <!-- Campos del formulario -->
+        <h3 class="font-bold text-lg"> - CREAR - </h3>
+        <input class="m-2 p-2" type="text" placeholder="ID" formControlName="id" [value]="AlergiasSeleccionado?.id">
+        <input class="m-2 p-2" type="text" placeholder="NombreAlergia" formControlName="nombreAlergia" [value]="AlergiasSeleccionado?.nombreAlergia">
+        <input class="m-2 p-2" type="text" placeholder="DetalleTratamiento" formControlName="detalleTratamiento" [value]="AlergiasSeleccionado?.detalleTratamiento">
+        <button class="btn" type="submit">Enviar</button>
+        <p class="py-4">Presione la tecla ESC o haga clic fuera para cerrar</p>
+      </form>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
+  </div>63=
